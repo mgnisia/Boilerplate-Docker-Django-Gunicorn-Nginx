@@ -1,5 +1,5 @@
 version: '3'
-# rsync -avzhe ssh docker_gunicorn root@62.113.246.205:/docker_gunicorn/
+
 services:
 
   djangoapp:
