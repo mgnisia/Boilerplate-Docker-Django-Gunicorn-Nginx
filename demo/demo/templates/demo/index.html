@@ -6,10 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'demo/css/main.css' %} ">
-    <title>Test</title>
+    <title>Boilerplate Docker Django Gunicorn Nginx</title>
 </head>
 <body>
-    <div class="container">fasdfasdf
-    </div>
+<h1 id="boilerplatedockerdjangogunicornnginx">Boilerplate-Docker-Django-Gunicorn-Nginx</h1>
+
+<p>This repo contains a small example for a Django App in a Docker Container. For the deployment the docker container uses Gunicorn and nginx. </p>
+
+<p>The <code>Dockerfile</code> and the <code>docker-compose</code>-File are based on the repo from <a href="https://github.com/Pawamoy/docker-nginx-postgres-django-example">pawamoy</a>. The config file includes a setup for an additional database, however this is not included in the <code>docker-compose</code>-File. If you would like to checkout the configuration for this setup have a look in the <a href="https://github.com/Pawamoy/docker-nginx-postgres-django-example">pawamoy</a>-repo.</p>
+
+<h3 id="manual">Manual</h3>
+
+<p>To build this container run in the folder of the <code>docker-compose</code>-file: </p>
+
+<ol>
+<li><code>docker-compose build</code></li>
+
+<li><code>docker-compose run -d</code> this runs the containers detachted</li>
+
+<li>Open you favourite browser and go to <a href="localhost/index/">localhost/index/</a></li>
+
+<li>To shutdown run <code>docker-compsose down</code></li>
+</ol>
+
+<h3 id="staticfiles">Static Files</h3>
+
+<h4 id="dockerfile">Dockerfile</h4>
+
+<p>The static files are mounted wih the volumes of the <code>docker-compose</code> files! However if you change the static files make sure, you remove the volumes with <code>docker volumes prune</code> or run <code>docker-compsose down -v</code>. Those commands remove the volumes and if you run <code>docker-compose build</code> again the volumes will be mounted again correctly :smile: You can inspect all listed mounted files in the menu</p>
+
+<h4 id="templates">Templates</h4>
+
+<p>To include the static files in your templates you can insert in e.g. in your header:</p>
+
+<pre><code class="css language-css">&lt;link rel="stylesheet" href="{% static 'demo/css/main.css' %} "&gt;
+</code></pre>
+
+<p>You can also select another path, just make sure that the static files will be collect when the command <code>python3 manage.py collectstatic</code> will be run. In the current setting the static files are set via 
+<code>STATICFILES_DIRS = [os.path.join(BASE_DIR, 'demo', 'static'),]</code>.</p>
 </body>
 </html>
