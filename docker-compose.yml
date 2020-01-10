@@ -11,7 +11,7 @@ services:
       - nginx_network
 
   nginx:
-    image: nginx:1.13
+    image: pagespeed/nginx-pagespeed:latest
     ports:
       - 80:80
     volumes:
