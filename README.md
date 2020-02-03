@@ -13,6 +13,10 @@ To build this container run in the folder of the `docker-compose`-file:
 3. Open you favourite browser and go to [localhost/index/](localhost/index/)
 4. To shutdown run `docker-compsose down`
 
+### Installing new libraries
+
+Just run `pipenv install _your library_` and the pipenv will update the `pipfile` and check for the dependencies. Make sure you have `pipenv` installed in your own (not the virtualenv one) python3 installation.  
+
 ### Static Files
 
 #### Dockerfile
